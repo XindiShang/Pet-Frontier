@@ -16,7 +16,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
 
-const ExpressError = require('./utils/expressError');
+const ExpressError = require('./utils/ExpressError');
 const User = require('./models/user');
 const petshopRoutes = require('./routes/petshops');
 const reviewRoutes = require('./routes/reviews')

@@ -1,5 +1,5 @@
 const { petshopSchema, reviewSchema, userSchema } = require('./schemas.js');
-const ExpressError = require('./utils/expressError');
+const ExpressError = require('./utils/ExpressError');
 const PetShop = require('./models/petshop')
 const Review = require('./models/review')
 const User = require('./models/user')
