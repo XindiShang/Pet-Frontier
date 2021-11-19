@@ -1,1 +1,0 @@
-const aNewNum = 9;
