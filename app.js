@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
-const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -17,6 +16,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
 
+const ExpressError = require('./utils/expressError');
 const User = require('./models/user');
 const petshopRoutes = require('./routes/petshops');
 const reviewRoutes = require('./routes/reviews')
@@ -25,6 +25,7 @@ const PetShop = require('./models/petshop');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/petFrontier';
 const secret = process.env.SECRET || 'petfrontier'
+
 
 // mongoose config
 main().catch(err => console.log(err));
