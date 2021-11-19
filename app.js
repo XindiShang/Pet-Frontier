@@ -24,7 +24,7 @@ const userRoutes = require('./routes/users');
 const PetShop = require('./models/petshop');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/petFrontier';
-const secret = process.end.SECRET || 'petfrontier'
+const secret = process.env.SECRET || 'petfrontier'
 
 // mongoose config
 main().catch(err => console.log(err));
@@ -35,7 +35,7 @@ async function main() {
 }
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 // *********************** config ***********************
