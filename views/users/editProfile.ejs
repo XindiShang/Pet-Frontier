@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+            <h1>编辑个人资料</h1>
+        </div>
+
+        <div class="col-8 col-sm-8 col-md-6 col-lg-4">
+            <form class="validated-form" action="/users/<%=user._id%>?_method=PUT" method="POST" novalidate enctype="multipart/form-data">
+                <div class="text-center">
+                    <div class="center-div" id="avatarPreviewContainer">
+                        <img src="<%=user.avatar.thumbnail%>" alt="Image Preview" id="avatarPreview">
+
+                    </div>
+
+                    <input type="file" name="avatar" id="image" class="d-none" accept=".jpg, .jpeg, .png"
+                        onchange="image_select()">
+                    <button class="btn btn-sm btn-secondary mt-2" type="button" onclick="image_reset()">还原头像</button>
+                    <button class="btn btn-sm btn-primary mt-2" type="button"
+                        onclick="document.getElementById('image').click()">更换头像</button>
+                </div>
+
+                <div class="form-group mb-3 mt-4">
+                    <label for="lastName">姓</label>
+                    <input id="lastName" class="form-control" type="text" name="user[lastName]"
+                        placeholder="user last name" value="<%=user.lastName%>" required>
+                        <div class="valid-feedback">很好!</div>
+                        <div class="invalid-feedback">请输入</div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="firstName">名</label>
+                    <input id="firstName" class="form-control" type="text" name="user[firstName]"
+                        placeholder="user first name" value="<%=user.firstName%>" required>
+                        <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="bio">个人简介</label>
+                    <input id="bio" class="form-control" type="text" name="user[bio]" placeholder="user short bio"
+                        value="<%=user.bio%>" required>
+                        <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+
+                </div>
+
+                <div class="form-group my-3 p-3 text-center">
+                    <a class="btn btn-lg btn-outline-secondary mx-2" href="/users/<%=user._id%>">取消</a>
+                    <button class="btn btn-lg btn-success mx-2">修改</button>
+                </div>
+            </form>
+        </div>     
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center d-none" id="spinnerBox">
+        <strong>加载中...</strong>
+        <div class="spinner-border mx-3" role="status" aria-hidden="true"></div>
+    </div>
+
+    <script>
+        const user = <%- JSON.stringify(user) %>;
+    </script>
+    <script src="/javascripts/previewSingle.js"></script>

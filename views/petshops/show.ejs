@@ -1,0 +1,171 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    
+    <div class="container">
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">首页</a></li>
+                <li class="breadcrumb-item"><a href="/petshops">浏览全部宠物店</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <%= selectedShop.name %>
+                </li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-6" id="leftBox">
+                <div id="petshopCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <% selectedShop.images.forEach((img, i)=> { %>
+                            <div class="carousel-item <%= i === 0? 'active': '' %> ">
+                                <img src="<%= img.blurCarousel %>" data-src="<%= img.carousel %>"
+                                    class="d-block carousel-img lazy-load-image" alt="">
+                            </div>
+                            <% }) %>
+                    </div>
+                    <% if (selectedShop.images.length> 1) {%>
+                        <ol class="carousel-indicators">
+                            <% selectedShop.images.forEach((img, i)=> { %>
+                                <li data-bs-target="#petshopCarousel" data-bs-slide-to="<%=i%> "
+                                    class="<%= i === 0? 'active': '' %>"></li>
+                                <% }) %>
+                        </ol>
+                        <a class="carousel-control-prev" href="#petshopCarousel" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#petshopCarousel" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                        <% } %>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title"><%= selectedShop.name %></h5>
+                            <h5 class="card-title">￥<%= selectedShop.price %>/人</h5>
+                        </div>
+                        <p class="card-text"> <%= selectedShop.description %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-muted">地址：<%= selectedShop.location %></li>
+                        <li class="list-group-item">店主：<a href="/users/<%= selectedShop.owner.id %>"><%= selectedShop.owner.username %></a></li>
+                        <li class="list-group-item">电话：<%= selectedShop.tel %></li>
+                    </ul>
+                    <% if (currentUser && selectedShop.owner.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                        <div class="card-body">
+                            <a href="/petshops/<%= selectedShop._id %>/edit" class="card-link btn btn-secondary">编辑</a>
+                            <form class="d-inline" action="/petshops/<%= selectedShop._id %>?_method=DELETE"method="POST">
+                                <button class="btn btn-outline-danger">删除</button>
+                            </form>
+                        </div>
+                    <% } %>
+                    <div class="card-footer text-muted">
+                        <%= moment(selectedShop.createdAt).fromNow() %>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rightBox" class="col-md-6 d-flex flex-wrap justify-content-center align-items-between mb-3">
+                <div class="map-container row mb-3">
+                    <div id="container"></div>
+                </div>
+
+                <div class="container-fluid bg-light text-dark p-5 row" id="commentBox" >
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h4 class="mb-0"><strong>评价</strong></h4>
+                        <a class="btn btn-success mb-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseComment" aria-expanded="false"
+                            aria-controls="collapseComment">写评价</a>
+                    </div>
+
+                    <div class="collapse" id="collapseComment">
+                        <% if (!currentUser) { %>
+                            <div class="callout callout-success">
+                                <h5>请先<a href="/login">登录</a></h5>
+                            </div>
+                        <% } %>
+                        <% if (currentUser) { %>
+                            <div class="callout">
+                                <h4><%= currentUser.username %>，快留下你对<strong><%= selectedShop.name %></strong>的评价吧</span></h4>
+                                <form action="/petshops/<%= selectedShop._id %>/reviews" class="mb-3 validated-form" method="POST" novalidate>
+                                    <div class="mb-3">
+                                        <fieldset class="starability-checkmark">
+                                            <input type="radio" id="no-rate" class="input-no-rate"
+                                                name="review[rating]" value="1" checked
+                                                aria-label="No rating." />
+                                            <input type="radio" id="first-rate1" name="review[rating]"
+                                                value="1" />
+                                            <label for="first-rate1" title="Terrible">1 star</label>
+                                            <input type="radio" id="first-rate2" name="review[rating]"
+                                                value="2" />
+                                            <label for="first-rate2" title="Not good">2 stars</label>
+                                            <input type="radio" id="first-rate3" name="review[rating]"
+                                                value="3" />
+                                            <label for="first-rate3" title="Average">3 stars</label>
+                                            <input type="radio" id="first-rate4" name="review[rating]"
+                                                value="4" />
+                                            <label for="first-rate4" title="Very good">4 stars</label>
+                                            <input type="radio" id="first-rate5" name="review[rating]"
+                                                value="5" />
+                                            <label for="first-rate5" title="Amazing">5 stars</label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="review[body]" id="body"
+                                        placeholder="大家都在问：服务态度好吗，环境怎么样？" cols="30" rows="4"
+                                        autocomplete="off" required></textarea>
+                                        <div class="valid-feedback">很好！</div>
+                                        <div class="invalid-feedback">评价不能为空</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-sm mt-2">发布评价</button>
+                                    </div>
+                                </form>
+                            </div>
+                        <% } %>
+                    </div>
+                    <hr>
+
+                    <% if (selectedShop.reviews.length === 0) { %>
+                        <em style="color: grey;">快来写首条评价！</em>
+                    <% } %>
+                        <div class="">
+                            <% for (let review of selectedShop.reviews.reverse()) {%>
+                                <div class="row" >
+                                    <div class="col-md-12">
+                                        <strong><a href="/users/<%= review.author.id %>"><%= review.author.username %></a></strong>
+                                        <span class=""><%= moment(review.createdAt).fromNow() %></span>
+                                        <p class="mb-0">
+                                            <%= review.body %>
+                                        </p>
+                                        <p class="starability-result" data-rating="<%= review.rating %>">Rated: <%= review.rating %> stars</p>
+                                        <% if (currentUser && review.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) {%>
+                                            <form action="/petshops/<%= selectedShop._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                                                <button class="btn btn-sm btn-danger">删除</button>
+                                            </form>
+                                        <% } %>
+                                        <hr>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const shop = <%- JSON.stringify(selectedShop) %>;
+    </script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=65996f9eb18445513b9bf8de8370b786"></script>
+
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script type="text/javascript" src="/javascripts/showShopMap.js"></script>

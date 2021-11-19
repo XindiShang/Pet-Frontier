@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container d-flex justify-content-center align-items-center mt-1 mb-5">
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+            <div class="card shadow" style="width: 22rem">
+                <img src="https://images.unsplash.com/photo-1510020553968-30f966e1ec9e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+                    alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title login-title">注册</h5>
+
+                    <form action="/register" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="inputLastName" class="form-label">姓</label>
+                                <input type="text" id="inputLastName" class="form-control" name="lastName" placeholder="姓" required autofocus>
+                                <div class="valid-feedback">很好!</div>
+                                <div class="invalid-feedback">请输入</div>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="inputFirstName" class="form-label">名</label>
+                                <input type="text" id="inputFirstName" class="form-control" name="firstName" placeholder="名" required >
+                                <div class="valid-feedback">很好!</div>
+                                <div class="invalid-feedback">请输入</div>
+                            </div>     
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">用户名</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="用户名" required>
+                            <div class="valid-feedback">很好!</div>
+                            <div class="invalid-feedback">请输入</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">邮箱</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="邮箱" required>
+                            <div class="valid-feedback">很好!</div>
+                            <div class="invalid-feedback">请输入</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">密码</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="密码" required>
+                            <div class="valid-feedback">很好!</div>
+                            <div class="invalid-feedback">请输入</div>
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="inputUserBio" class="form-label">简介</label>
+                            <input type="text" id="inputUserBio" class="form-control" name="bio" placeholder="简单介绍一下自己吧" required >
+                            <div class="valid-feedback">很好!</div>
+                            <div class="invalid-feedback">请输入</div>
+                        </div>
+                
+                        <div class="mb-3 d-none">
+                            <label for="inputAdminCode" class="form-label">AdminCode</label>
+                            <input type="text" id="inputAdminCode" class="form-control" name="adminCode" placeholder="Admincode / Leave it if you dont have one">
+                            <div class="valid-feedback">很好!</div>
+                            <div class="invalid-feedback">请输入</div>
+                        </div>
+                
+                        <div class="mb-2 d-grid">
+                            <button class="btn btn-success btn-lg">登录</button>
+                        </div>     
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

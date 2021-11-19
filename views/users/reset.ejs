@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container d-flex justify-content-center align-items-center mt-3 mb-4">
+        <div class="row">
+            <div class="col-md-6 col-xl-4">
+                <div class="card shadow" style="width: 22rem">
+                    <div class="card-body">
+                        <h5 class="card-title login-title">重置密码</h5>
+
+                        <form class="alidated-form" action="/reset/<%= token %>" method="POST" novalidate>
+                            <div class="mb-3 form-group">
+                                <label for="password" class="form-label">新密码</label>
+                                <input type="password" id="password" class="form-control" name="password"
+                                    placeholder="新密码" required autofocus>
+                                <div class="valid-feedback">很好!</div>
+                                <div class="invalid-feedback">请输入</div>
+                            </div>
+
+                            <div class="mb-3 form-group">
+                                <label for="confirm" class="form-label">确认密码</label>
+                                <input type="password" id="confirm" class="form-control" name="confirm"
+                                    placeholder="确认密码" required>
+                                <div class="valid-feedback">很好!</div>
+                                <div class="invalid-feedback">请输入</div>
+                            </div>
+
+                            <div class="mb-2 d-grid">
+                                <button type="submit" class="btn btn-primary">重置密码</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+

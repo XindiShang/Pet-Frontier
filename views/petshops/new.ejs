@@ -1,0 +1,124 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row justify-content-center">
+        <h1 class="text-center">创建店铺</h1>
+        <div class="col-md-6">
+            <form action="/petshops" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+
+                <div class="mb-3 form-group">
+                    <label for="name" class="form-label">店铺名称</label>
+                    <input type="text" class="form-control" name="petshop[name]" id="name" placeholder="店铺名称" required autofocus>
+                    <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="row ">
+                        <div class="col-6">
+                            <label for="province" class="form-label">省份</label>
+                            <select class="form-select" id="province" name="petshop[province]" required> >
+
+                            </select>
+                            <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+
+                        </div>
+                        <div class="col-6">
+                            <label for="city" class="form-label">城市</label>
+                            <select class="form-select" id="city" name="petshop[city]" required>
+
+                            </select>  
+                            <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="map-container mb-3 container">
+                    <div id="container"></div>
+                </div>
+
+                <div class="mb-3 form-group">
+                    <label for="location" class="form-label">地址</label>
+                    <div class="info">
+                        <div class="input-item">
+                            <input id="location" class="form-control" name="petshop[location]" type="text" placeholder="地址" required>
+                            <div class="valid-feedback">很好!</div>
+                            <div class="invalid-feedback">请输入</div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" id="hiddenLng" name="petshop[lng]">
+                <input type="hidden" id="hiddenLat" name="petshop[lat]">
+
+                <div class="mb-3 form-group">
+                    <label for="tel" class="form-label">电话</label>
+                    <input type="text" name="petshop[tel]" class="form-control" id="tel"  placeholder="电话" required>
+                    <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                </div>
+
+                <div class="mb-3 form-group">
+                    <label for="price" class="form-label">人均消费</label>
+                    <div class="input-group">
+                        <span class="input-group-text">￥</span>
+                        <input type="number" step="any" class="form-control" name="petshop[price]" placeholder="0.00"
+                            id="price" min="0" aria-label="Price in RMB" required>
+                        <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                    </div>
+                </div>
+
+                <div class="mb-3 form-group">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <label for="image" class="form-label mb-0 d-inline">上传店铺图片</label>
+                        <button class="btn btn-sm btn-primary selectImageBtn" type="button"
+                            onclick="document.getElementById('image').click()">选择图片</button>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <input type="file" name="image" id="image" multiple class="d-none" accept=".jpg, .jpeg, .png" onchange="image_select()"
+                            required>
+                        <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                    </div>
+
+                    <div class="d-flex justify-content-center" id="imagePreviewContainer1"> 
+                        <div class="d-flex mixContainer1 mb-2">
+                                    <div class="image_container1 justify-content-center">
+                                        <img src="/assets/defaultImage.jpg" alt="image">
+                                    </div>                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">店铺描述</label>
+                    <textarea name="petshop[description]" class="form-control"  placeholder="店铺描述" id="description" cols="30" rows="3"
+                        required></textarea>
+                    <div class="valid-feedback">很好!</div>
+                    <div class="invalid-feedback">请输入</div>
+                </div>
+
+                <div class="my-3 p-3 text-center">
+                    <a href="/petshops" class="btn btn-outline-secondary btn-lg mx-2">取消</a>
+                    <button class="btn btn-success btn-lg mx-2">创建</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center d-none" id="spinnerBox">
+        <strong>加载中...</strong>
+        <div class="spinner-border mx-3" role="status" aria-hidden="true"></div>
+    </div>
+
+
+    <script src="/javascripts/previewNew.js"></script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=65996f9eb18445513b9bf8de8370b786&plugin=AMap.Autocomplete"></script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=65996f9eb18445513b9bf8de8370b786&plugin=AMap.Geocoder"></script>
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+    <script type="text/javascript" src="/javascripts/newShopMap.js"></script>

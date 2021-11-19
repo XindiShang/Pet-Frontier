@@ -1,0 +1,45 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/assets/paw.ico" alt="PetFrontierLogo" class="d-inline-block align-top">
+            <h3 class="d-inline brandText">宠物前线</h3></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/petshops">浏览宠物店</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/petshops/new">我要开店</a>
+                </li>
+            </ul>
+
+            <div class="navbar-nav navbar-right-side">
+                <% if (!currentUser) { %>
+                    <a href="/login" class="nav-link">登录</a>
+                    <a href="/register" class="nav-link">注册</a>
+                    <% } else { %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/users/<%= currentUser.id %>" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="<%= currentUser.avatar.thumbnail %>" alt="" width="40" height="40" class="d-inline-block align-top navbar-avatar">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a href="/users/<%= currentUser.id %>" class="dropdown-item"><%= currentUser.username %>的主页</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a href="/logout" class="dropdown-item">退出登录</a></li>
+                            </ul>
+                        </li>
+                    <% } %>
+            </div>
+
+        </div>
+      
+    </div>
+</nav>

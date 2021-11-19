@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container d-flex justify-content-center align-items-center mt-3 mb-4">
+        <div class="row">
+            <div class="col-md-6 col-xl-4">
+                <div class="card shadow" style="width: 22rem">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80"
+                        alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title login-title">登录</h5>
+
+                        <form action="/login" method="POST" class="validated-form" novalidate>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">用户名</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="用户名"
+                                    required autofocus>
+                                <div class="valid-feedback">很好!</div>
+                                <div class="invalid-feedback">请输入</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">密码</label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="密码" required>
+                                <div class="valid-feedback">很好!</div>
+                                <div class="invalid-feedback">请输入</div>
+                            </div>
+                            <div class="mb-2 d-grid">
+                                <button class="btn btn-primary btn-lg">登录</button>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-center">
+                                <a href="/forgot" class="forgot-link">忘记密码?</a>
+                            </div>
+                            <hr class="card-line">
+                            <div class="mb-3 d-flex justify-content-center">
+                                <a class="btn btn-success btn-lg" href="/register">新建账户</a>
+                            </div>   
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
