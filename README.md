@@ -13,7 +13,7 @@ Following instructions you will get a copy of the project up and running on your
 * Account in QQMail (For sending password reset emails) https://mail.qq.com/ *QQ邮箱账号 (发送密码重置邮件)
 ## Installing 安装
 * In order to run the code you must have the following dependencies first. *运行代码之前请安装依赖包
-  * async, cloudinary, connect-flash, connect-mongo, cors, dotenv, ejs, ejs-mate, express, express-mongo-sanitize, express-session, helmet, joi, method-override, moment, mongoose, mongoose-paginate-v2, multer, multer-storage-cloudinary, node-fetch, nodemailer, passport, passport-local, passport-local-mongoose,sanitize-html
+  * async, cloudinary, connect-flash, connect-mongo, cors, dotenv, ejs, ejs-mate, express, express-mongo-sanitize, express-session, helmet, joi, method-override, moment, mongoose, mongoose-paginate-v2, multer, multer-storage-cloudinary, node-fetch, nodemailer, passport, passport-local, passport-local-mongoose, sanitize-html
 * To run the app *运行代码
 ```
   * npm init
