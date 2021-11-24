@@ -36,8 +36,8 @@ Following instructions you will get a copy of the project up and running on your
 * You can also view the demo video on <a href="https://www.bilibili.com/video/BV1Mq4y1r7yB/" target="_blank">[Bilibili link]</a> *点击链接查看B站视频演示
 ## ScreenShot 截图
 <p float="left">
-<img alt="Demo_1" src="https://github.com/XindiShang/assets/blob/0c53e693cf21a5ae81a6ea5d8940fa72416b03c1/pf_demo1.jpg" width="500">
-<img alt="Demo_2" src="https://github.com/XindiShang/assets/blob/0c53e693cf21a5ae81a6ea5d8940fa72416b03c1/pf_demo2.jpg" width="500">
+<img alt="Demo_1" src="https://github.com/XindiShang/assets/blob/0c53e693cf21a5ae81a6ea5d8940fa72416b03c1/pf_demo1.jpg" width="400">
+<img alt="Demo_2" src="https://github.com/XindiShang/assets/blob/0c53e693cf21a5ae81a6ea5d8940fa72416b03c1/pf_demo2.jpg" width="400">
 </p>
 
 ## Author 作者
