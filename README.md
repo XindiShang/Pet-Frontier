@@ -12,9 +12,9 @@ Following instructions you will get a copy of the project up and running on your
 * Account in Amap (For using map features) https://lbs.amap.com/ *高德地图开放平台账号 (地图功能展示)
 * Account in QQMail (For sending password reset emails) https://mail.qq.com/ *QQ邮箱账号 (发送密码重置邮件)
 ## Installing 安装
-* In order to run the code you must have the following dependencies first. 运行代码之前请安装依赖包
+* In order to run the code you must have the following dependencies first. *运行代码之前请安装依赖包
   * async, cloudinary, connect-flash, connect-mongo, cors, dotenv, ejs, ejs-mate, express, express-mongo-sanitize, express-session, helmet, joi, method-override, moment, mongoose, mongoose-paginate-v2, multer, multer-storage-cloudinary, node-fetch, nodemailer, passport, passport-local, passport-local-mongoose,sanitize-html
-* To run the app 运行代码
+* To run the app *运行代码
 ```
   * npm init
     * npm install "whichever is not present" --save eg. npm install express body-parser dotenv --save
@@ -24,13 +24,13 @@ Following instructions you will get a copy of the project up and running on your
 * Front End: HTML, CSS, Bootstrap
 * Back End: NodeJS, NPM, ExpressJS, REST, PassportJS, MongoDB
 ## Project Module 核心模块
-* Petshop -  Create Petshop, Read Petshop, Update Petshop, Delete Petshop
-* Review -  Create Review, Read Review, Delete Review
-* User - Sign up, Login, Reset Password, Update Profile
-  * User With Admin Code - can update or delete other users' petshops and reviews
-  * User Without Admin Code - can only update or delete their own petshops and reviews
+* Petshop -  Create Petshop, Read Petshop, Update Petshop, Delete Petshop *创建、查看、修改、删除宠物店
+* Review -  Create Review, Read Review, Delete Review *创建、查看、删除评价
+* User - Sign up, Login, Reset Password, Update Profile *用户注册、登录、密码重置、个人主页
+  * User With Admin Code - can update or delete other users' petshops and reviews *管理员权限：可修改、删除一切内容
+  * User Without Admin Code - can only update or delete their own petshops and reviews * 非管理员权限：只可修改、删除个人创建的内容
 ## Constraint 限制
-* No create, update and delete option without login in to website.
+* No create, update and delete option without login in to website. *登录后才可以创建、修改、更新内容
 ## Live Demo 展示
 * Please visit this <a href="https://pet-frontier.herokuapp.com/" target="_blank">[heroku link]</a> *点击链接查看网页展示
 * You can also view the demo video on <a href="https://www.bilibili.com/video/BV1Mq4y1r7yB/" target="_blank">[Bilibili link]</a> *点击链接查看B站视频演示
@@ -43,6 +43,6 @@ Following instructions you will get a copy of the project up and running on your
 ## Author 作者
 * Xindi Shang
 ## Future Scope 待改进
-* Sort petshops by location/rating 增加筛选条件
-* Add image upload constraints 增加图片上传限制
+* Sort petshops by location/rating *增加筛选条件
+* Add image upload constraints *增加图片上传限制
 
